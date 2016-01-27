@@ -5,8 +5,28 @@ function makeEditable() {
         $('#editRow').modal();
     });
 
+    $('#filter').submit(function () {
+        console.log('yo');
+        var form = $('#filter');
+        debugger;
+        $.ajax({
+            url: ajaxUrl + "filter",
+            type: 'POST',
+            data: form.serialize(),
+            success: function (data) {
+                oTable_datatable.fnClearTable();
+                $.each(data, function (key, item) {
+                    oTable_datatable.fnAddData(item);
+                });
+                oTable_datatable.fnDraw();
+                successNoty('Filtered');
+            }
+        });
+        return false;
+    });
+
     $('.delete').click(function () {
-        deleteRow($(this).attr("id"));
+        deleteRow(parseInt($(this).attr("id").substring(2)));
     });
 
     $('#detailsForm').submit(function () {

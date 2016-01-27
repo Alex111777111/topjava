@@ -1,6 +1,7 @@
 package ru.javawebinar.topjava.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ru.javawebinar.topjava.model.UserMeal;
 import ru.javawebinar.topjava.repository.UserMealRepository;
@@ -16,6 +17,7 @@ import java.util.Collection;
 @Service
 public class UserMealServiceImpl implements UserMealService {
 
+    @Qualifier("dataJpaUserMealRepositoryImpl")
     @Autowired
     private UserMealRepository repository;
 
@@ -31,7 +33,9 @@ public class UserMealServiceImpl implements UserMealService {
 
     @Override
     public Collection<UserMeal> getBetweenDateTimes(LocalDateTime startDateTime, LocalDateTime endDateTime, int userId) {
-        return repository.getBetween(startDateTime, endDateTime, userId);
+        Collection<UserMeal> collection = repository.getBetween(startDateTime, endDateTime, userId);
+
+        return collection;
     }
 
     @Override
