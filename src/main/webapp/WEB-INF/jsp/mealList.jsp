@@ -199,7 +199,7 @@
             ]
         };
 
-        oTable_datatable.DataTable(oTable_datatable_params);
+        oTable_datatable.dataTable(oTable_datatable_params);
         makeEditable();
     });
 </script>

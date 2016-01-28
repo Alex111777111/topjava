@@ -6,7 +6,7 @@ function makeEditable() {
     });
 
     $('#filter').submit(function () {
-        console.log('yo');
+        console.log('filtrer1');
         var form = $('#filter');
         debugger;
         $.ajax({
