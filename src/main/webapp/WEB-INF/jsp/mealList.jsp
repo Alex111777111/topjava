@@ -69,7 +69,7 @@
                 </thead>
                 <c:forEach items="${mealList}" var="meal">
                     <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.to.UserMealWithExceed"/>
-                    <tr class="${meal.exceed ? 'exceeded' : 'normal'}">
+                    <tr id="${meal.id}" class="${meal.exceed ? 'exceeded' : 'normal'}">
                         <td>
                    <%--<fmt:parseDate value="${meal.dateTime}" pattern="y-M-dd'T'H:m" var="parsedDate"/>--%>
                    <%--<fmt:formatDate value="${parsedDate}" pattern="yyyy.MM.dd HH:mm" />--%>
@@ -77,8 +77,8 @@
                         </td>
                         <td>${meal.description}</td>
                         <td>${meal.calories}</td>
-                        <td><a class="btn btn-xs btn-primary edit" id="u_${meal.id}" name="">Update</a></td>
-                        <td><a class="btn btn-xs btn-danger delete" id="d_${meal.id}">Delete</a></td>
+                        <td><a class="btn btn-xs btn-primary edit">Update</a></td>
+                        <td><a class="btn btn-xs btn-danger delete">Delete</a></td>
                     </tr>
                 </c:forEach>
             </table>
@@ -141,23 +141,17 @@
 <script type="text/javascript" src="webjars/noty/2.2.4/jquery.noty.packaged.min.js"></script>
 <script type="text/javascript" src="resources/js/datatablesUtil.js"></script>
 <script type="text/javascript">
-    /*$(function () {
-        $('.date-picker').datetimepicker({ dateFormat: 'yyyy-mm-dd' }).val();
-        $('#endDate').datepicker({ dateFormat: 'yyyy-mm-dd' }).val();
-    });*/
-   /* var dateTypeVar = $('#startDate').datepicker('getDate');
-    $.datepicker.formatDate('dd-mm-yyyy', dateTypeVar);*/
     $('.date-picker').datetimepicker({
         timepicker: false,
-        format: 'Y-m-d',
+        format: 'Y-m-d'
     });
     $('.time-picker').datetimepicker({
         datepicker: false,
-        format: 'H:i',
+        format: 'H:i'
     });
 
     $('#dateTime').datetimepicker({
-        format: "Y-m-d H:i",
+        format: "Y-m-d H:i"
     });
 </script>
 <script type="text/javascript">
@@ -168,7 +162,7 @@
 
     //            $(document).ready(function () {
     $(function () {
-        oTable_datatable = $('#datatable');
+        //oTable_datatable = $('#datatable');
         oTable_datatable_params = {
             "bPaginate": false,
             "bInfo": false,
@@ -199,7 +193,7 @@
             ]
         };
 
-        oTable_datatable.dataTable(oTable_datatable_params);
+        oTable_datatable = $('#datatable').DataTable(oTable_datatable_params);
         makeEditable();
     });
 </script>
