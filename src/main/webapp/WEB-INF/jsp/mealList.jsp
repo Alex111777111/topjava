@@ -18,29 +18,29 @@
 
                 <form method="post" class="form-horizontal" role="form" id="filter">
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="datepicker1">From Date:</label>
+                        <label class="control-label col-sm-2" for="startDate">From Date:</label>
 
                         <div class="col-sm-2">
-                            <input type="text" name="startDate" id="datepicker1">
+                            <input name="startDate" id="startDate">
                         </div>
 
-                        <label class="control-label col-sm-2" for="datepicker2">To Date:</label>
+                        <label class="control-label col-sm-2" for="endDate">To Date:</label>
 
                         <div class="col-sm-2">
-                            <input type="text" name="endDate" id="datepicker2">
+                            <input name="endDate" id="endDate">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2" for="timepicker1">From Time:</label>
+                        <label class="control-label col-sm-2" for="startTime">From Time:</label>
 
                         <div class="col-sm-2">
-                            <input type="text" name="startTime" id="timepicker1">
+                            <input name="startTime" id="startTime">
                         </div>
 
-                        <label class="control-label col-sm-2" for="timepicker2">To Time:</label>
+                        <label class="control-label col-sm-2" for="endTime">To Time:</label>
 
                         <div class="col-sm-2">
-                            <input type="text" name="endTime" id="timepicker2">
+                            <input name="endTime" id="endTime">
                         </div>
                     </div>
                     <div class="form-group">
@@ -96,7 +96,7 @@
                         <label for="datetimepicker" class="control-label col-xs-3">Date</label>
 
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="datetimepicker"
+                            <input class="form-control" id="datetimepicker"
                                    name="dateTime" placeholder="Date">
                         </div>
                     </div>

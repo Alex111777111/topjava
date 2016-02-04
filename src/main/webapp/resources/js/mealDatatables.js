@@ -1,13 +1,13 @@
 var ajaxUrl = 'ajax/profile/meals/';
 var datatableApi;
 
-$("input[id^='datepicker']").datetimepicker({
+$("input[id$='Date']").datetimepicker({
     timepicker:false,
     format:'Y-m-d',
     lang:'ru'
 });
 
-$("input[id^='timepicker']").datetimepicker({
+$("input[id$='Time']").datetimepicker({
     datepicker:false,
     format:'H:i',
     lang:'ru'
