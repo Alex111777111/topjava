@@ -1,5 +1,6 @@
 package ru.javawebinar.topjava.web.user;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import ru.javawebinar.topjava.util.UserUtil;
 import ru.javawebinar.topjava.web.ExceptionInfoHandler;
 
 import javax.validation.Valid;
+import javax.validation.ValidationException;
 import java.util.List;
 
 /**
@@ -39,12 +41,17 @@ public class AdminAjaxController extends AbstractUserController implements Excep
     public ResponseEntity<String> createOrUpdate(@Valid UserTo userTo, BindingResult result) {
         if (result.hasErrors()) {
             // TODO change to exception handler
-            StringBuilder sb = new StringBuilder();
+            /*StringBuilder sb = new StringBuilder();
             result.getFieldErrors().forEach(fe -> sb.append(fe.getField()).append(" ").append(fe.getDefaultMessage()).append("<br>"));
-            return new ResponseEntity<>(sb.toString(), HttpStatus.UNPROCESSABLE_ENTITY);
+            return new ResponseEntity<>(sb.toString(), HttpStatus.UNPROCESSABLE_ENTITY);*/
+            throw new ValidationException("Fields may not be empty");
         }
         if (userTo.getId() == 0) {
-            super.create(UserUtil.createFromTo(userTo));
+            try {
+                super.create(UserUtil.createFromTo(userTo));
+            }catch (DataIntegrityViolationException e){
+                throw new DataIntegrityViolationException("User with this email already present in application.");
+            }
         } else {
             super.update(userTo);
         }

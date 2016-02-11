@@ -20,7 +20,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = UserMealRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class UserMealRestController extends AbstractUserMealController implements ExceptionInfoHandler {
+public class
+
+
+UserMealRestController extends AbstractUserMealController implements ExceptionInfoHandler {
     public static final String REST_URL = "/rest/profile/meals";
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
